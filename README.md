@@ -97,38 +97,94 @@ git log
 ```
 
 ## Module 2: Branching & Merging
+
 ### Concepts Covered:
 
-- Branch isolation
+- Working with isolated branches
+
+- Merging changes back to main
 
 - Fast-forward vs. 3-way merges
 
-- Conflict resolution
+- Resolving merge conflicts
 
 ```bash
-CLI Commands:
 
-bash
-git branch                       # List branches
-git branch <name>                # Create branch
-git switch <branch>              # Switch branch
-git switch -c <new-branch>       # Create & switch
-git merge <branch>               # Merge into current branch
+CLI Commands:
+git branch                     # List all branches
+git branch <name>             # Create a new branch
+git switch <branch>           # Switch to an existing branch
+git switch -c <new-branch>    # Create and switch to a new branch
+git merge <branch>            # Merge given branch into current branch
 ```
 
-### Exercise:
+Exercise:
+1. Create a new branch and switch to it
+```bash
+git switch -c feature-1       # '-c' creates the new branch and 'switch' command switches to it.
+```
+> You're now working on a new isolated branch named feature-1.
 
-1. Create feature branch from main
+2. Make some change in the file and commit
+```bash
+git add feature.txt           # stages the file
+git commit -m "Add feature 1" # commits the change
+```
 
-2. Make conflicting changes in both branches
+3. Switch back to the main branch
+```bash
+git switch main               # switches command switches it to main branch
+```
 
-3. Resolve merge conflict manually:
+4. Make some other conflicting change in the same file
+```bash
+git add feature.txt
+git commit -m "Main branch change"
+```
 
-3. Edit conflicted files
+5. Try to merge feature-1 into main
+```bash
+git merge feature-1           # merges the 2 branches
+```
+> Since both branches changed the same file, Git will report a merge conflict.
 
-4. git add resolved files
+6. Resolve the conflict manually
+Open the conflicted file (e.g, feature.txt). It will look like this:
 
-5. git commit
+```txt
+<<<<<<< HEAD
+This is main branch change
+=======
+This is feature 1
+>>>>>>> feature-1
+```
+Edit the file to resolve the conflict:
+
+```txt
+This is main branch change
+This is feature 1
+```
+
+7. Stage the resolved file and commit
+```bash
+git add feature.txt
+git commit -m "Resolve merge conflict between main and feature-1"
+```
+
+Bonus Tip: Delete a branch (after merging)
+Once you've successfully merged a feature branch, you can delete it to keep your repo clean:
+
+```bash
+git branch -d feature-1
+```
+> Use -D instead of -d to force delete if it's not merged yet. ^_~
+
+
+
+#### -  What’s a developer’s favorite place to hang out?
+####   → The branch.  ヾ(≧▽≦*)o
+
+
 
 ## Module 3: GitHub Integration
 ### Concepts Covered:
@@ -186,6 +242,10 @@ If your local branch is named master, use:
 ```bash
 git push -u origin master
 ```
+
+NOTE:
+```git push``` uploads your commits to the remote repository for the branch you’re currently working in.
+
 5. Clone a partner's repo
 ```bash
 git clone git@github.com:partnerusername/their-repo-name.git
@@ -388,11 +448,40 @@ git stash                       # Temporary shelf
 
 ### Exercise:
 
-1. Commit → git reset --soft → modify → recommit
+1. Undo and recommit
+-Make a change and commit it
+```bash
+git reset --soft HEAD~1
+```
+-Modify the file and recommit the updated change
 
-2. Intentionally break code → git restore
+2. Discard Broken Code
+-intentionally break a file
+-Discard changes with:
+```bash
+git restore <file>
+```
 
-3. Use git revert on pushed commit
+3. Revert a pushed commit
+-Identify the hash of a commit already pushed
+```bash
+git revert <commit-hash>
+```
+-Push the reverted commit to remote
+```bash
+git push
+```
+
+4. Use git stash
+-Make uncommitted changes
+```bash
+git stash
+```
+-switch branches of perform other tasks
+-reapply the changes with:
+```bash
+git stash pop
+```
 
 ## Module 6: Advanced Practices
 ### Concepts Covered:
