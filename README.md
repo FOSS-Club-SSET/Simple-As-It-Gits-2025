@@ -193,178 +193,100 @@ git clone git@github.com:partnerusername/their-repo-name.git
 
 ## Module 4: Collaboration Workflow
 
-### Why collaborate on GitHub?
-
-- Because coding alone is like talking to yourself — sometimes genius, sometimes chaos.  
-- Working as a **team** on a shared codebase helps build real-world dev skills.
-- GitHub is like a **Google Drive for your code**, but way more powerful for teams.
-
-> Think of GitHub like a giant project notebook in the cloud.  
-> You and your friends each write your parts (on different pages a.k.a. branches), then submit them (via Pull Requests), and review changes together.
-
----
-
 ### Concepts Covered:
 
-- Forking and Cloning other people's repositories
-- Making your changes and **pushing** them online
-- Collaborating with Pull Requests (PRs)
-- Syncing with remote changes using `fetch`, `pull`, and `rebase`
-- Understanding what "Upstream" means
+- Forking a repository on GitHub
+- Cloning the forked repository
+- Creating a new branch for changes
+- Making and committing changes in the cloned repo
+- Pushing changes to the forked GitHub repo
+- Opening a Pull Request (PR)
 
 ---
+
+Task:
+There is a base repository with a folder named 'A'. The task is to add a .md (README) file in folder 'A', push it, and open a Pull Request to contribute it.
 
 ### CLI Commands:
 
-```bash
-git fetch                         # Get updates from remote without merging
-git pull                          # Fetch + merge remote changes
-git pull --rebase                 # Reapply your changes on top of latest
-git push                          # Push your local changes to remote
-git push --force-with-lease       # Safe force-push (used with rebase)
-git remote -v                     # View remote URLs
-```
+bash
+git clone <your-fork-url>            # Clone your forked repo
+git switch -c <your-branch-name>     # Create and switch to a new branch
+cd A                                 # Navigate to folder A
+git add <file>                       # Stage your changes
+git commit -m "Your message"         # Commit the changes
+git push origin <your-branch-name>   # Push your branch to your GitHub fork
+
 
 ---
 
-### Real-World Analogy
+### Exercise:
 
-> Imagine you're all editing a group project:  
-> - GitHub = shared folder  
-> - You = edit your own copy (branch)  
-> - PR = "Hey team, check and merge my part"  
-> - Merge conflict = “Oops! We both wrote on the same paragraph.”
+#### 1. Fork the Original Repository
 
----
+- Go to the GitHub page of the repository you want to contribute to.
+- Click on the *Fork* button in the upper-right corner.
+- This will create a copy of the repository under your GitHub account.
 
-### Exercise: Simulate Team Collaboration
 
-Let’s pretend you're collaborating with a teammate named `Alex`. You both are working on the same project repo.
+#### 2. Clone the Forked Repository
 
----
+bash
+git clone https://github.com/your-username/forked-repo.git
+cd forked-repo
 
-#### Step 1: One person pushes a new change to the remote
 
-Let’s say *Alex* pushes a new commit to GitHub from their local:
+#### 3. Create and Switch to a New Branch
 
-```bash
-git add alex-feature.txt
-git commit -m "Alex adds a new feature"
-git push origin main
-```
+bash
+git switch -c my-feature-branch
 
----
+> This keeps your changes isolated from the main code.
 
-#### Step 2: You fetch Alex’s changes into your local repo
 
-Back on your local machine:
+#### 4. Navigate to folder A
 
-```bash
-git fetch origin                # Gets the latest changes from GitHub
-git merge origin/main          # Merge those changes into your current branch
-```
+bash
+cd A
 
-Or, alternatively (more modern and clean):
+> This will navigate to folder A, residing inside the base repository.
 
-```bash
-git pull --rebase              # Reapply your work on top of latest remote work
-```
 
-> Rebase helps keep the history clean.  
-> It’s like saying: "Let me add my story **after** Alex’s instead of **merging side by side**."
+#### 5. Make Changes
 
----
+- Edit files, fix bugs, or add features.
+- Save your work.
 
-#### Step 3: Push your updated work to GitHub
 
-```bash
-git push origin main
-```
+#### 6. Stage and Commit Changes
 
----
+bash
+git add .
+git commit -m "Add a meaningful commit message describing your change"
 
-#### Step 4: Simulate a Pull Request (PR)
 
-Go to your GitHub repository in the browser:
+#### 7. Push Your Branch to Your Fork
 
-1. Click on “Pull Requests” tab  
-2. Click “New Pull Request”  
-3. Compare your feature branch with `main`  
-4. Click **Create Pull Request**  
-5. Add a meaningful title and description
+bash
+git push origin my-feature-branch
 
-> This is how real-world teams review code.  
-> Think of PRs as "code homework submissions" — your teammates will give feedback before it's merged.
+
+#### 8. Open a Pull Request (PR)
+
+- Go to your forked repository on GitHub.
+- You'll see a prompt to open a pull request for the pushed branch.
+- Click *"Compare & pull request"*.
+- Add a title and description for your changes.
+- Click *"Create pull request"*.
+
+> Now the project maintainers can review and merge your contributions!
 
 ---
 
-#### Step 5: Resolve Merge Conflicts (if any)
+### ✅ Summary:
 
-If someone else modified the same lines as you, GitHub or CLI will throw a **merge conflict**.
-
-To fix it:
-
-1. Open the conflicting file  
-2. You'll see something like:
-
-```txt
-<<<<<<< HEAD
-This is your change
-=======
-This is Alex's change
->>>>>>> main
-```
-
-3. Edit to combine changes like this:
-
-```txt
-This is your change
-This is Alex's change
-```
-
-4. Stage and commit resolved file:
-
-```bash
-git add conflicted-file.txt
-git commit -m "Resolve conflict between Alex and my changes"
-```
-
----
-
-#### Step 6: (Optional) Push with Force
-
-If you rebased your changes:
-
-```bash
-git push --force-with-lease
-```
-
-> It’s safer than `--force`, and checks if someone else pushed since your last pull.
-
----
-
-#### Bonus: Upstream? What’s that?
-
-If you fork someone’s repo, their repo is your **upstream**.
-
-You can sync with it like this:
-
-```bash
-git remote add upstream git@github.com:OriginalUser/OriginalRepo.git
-git fetch upstream
-git merge upstream/main
-```
-
-> It's like saying: "Let me pull updates from the original project I forked from."
-
----
-
-### Collaboration Wisdom 💡
-
-- Always **pull before you push**
-- Use `pull --rebase` if working solo, `merge` if working with teammates
-- Don’t be afraid of merge conflicts — they’re part of the dev life
-- Communicate on PRs and commit messages like a pro
+- Fork → Clone → Branch → Navigate → Change → Push → PR
+- Contribute to open source without affecting the original code directly.
 
 
 ## Module 5: Undoing Changes
