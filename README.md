@@ -205,17 +205,16 @@ git clone git@github.com:partnerusername/their-repo-name.git
 ---
 
 Task:
-There is a base repository with a folder named 'A'. The task is to add a .md (README) file in folder 'A', push it, and open a Pull Request to contribute it.
+Fork the Simple As It Gits repo, clone it to your local machine, and add a <your_name>.md file in the participants folder.
 
 ### CLI Commands:
 
 bash
-git clone <your-fork-url>            # Clone your forked repo
-git switch -c <your-branch-name>     # Create and switch to a new branch
-cd A                                 # Navigate to folder A
-git add <file>                       # Stage your changes
-git commit -m "Your message"         # Commit the changes
-git push origin <your-branch-name>   # Push your branch to your GitHub fork
+git clone    
+git switch      
+git add              
+git commit        
+git push
 
 
 ---
@@ -224,7 +223,7 @@ git push origin <your-branch-name>   # Push your branch to your GitHub fork
 
 #### 1. Fork the Original Repository
 
-- Go to the GitHub page of the repository you want to contribute to.
+- Go to the GitHub page of the Simple As It Gits repository.
 - Click on the *Fork* button in the upper-right corner.
 - This will create a copy of the repository under your GitHub account.
 
@@ -232,8 +231,8 @@ git push origin <your-branch-name>   # Push your branch to your GitHub fork
 #### 2. Clone the Forked Repository
 
 bash
-git clone https://github.com/your-username/forked-repo.git
-cd forked-repo
+git clone git@github.com:your-username/Simple-As-It-Gits-2025.git
+cd Simple-As-It-Gits-2025/
 
 
 #### 3. Create and Switch to a New Branch
@@ -247,14 +246,14 @@ git switch -c my-feature-branch
 #### 4. Navigate to folder A
 
 bash
-cd A
+cd Participants
 
-> This will navigate to folder A, residing inside the base repository.
+> This will navigate to folder Participants, residing inside the Simple-As-It-Gits-2025 repository.
 
 
 #### 5. Make Changes
 
-- Edit files, fix bugs, or add features.
+- Enter your name and a short sentence about yourself.
 - Save your work.
 
 
