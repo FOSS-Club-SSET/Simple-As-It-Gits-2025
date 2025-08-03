@@ -180,14 +180,6 @@ git branch -d feature-1 # Safely delete the branch if merged
 > Use `-D` instead of `-d` to force delete if the branch hasn't been merged yet.
 ```
 > Use -D instead of -d to force delete if it's not merged yet. ^_~
-
-
-
-#### -  What’s a developer’s favorite place to hang out?
-####   → The branch.  ヾ(≧▽≦*)o
-
-
-
 ## Module 3: GitHub Integration
 ### Concepts Covered:
 
