@@ -24,14 +24,15 @@
 - Change tracking
 
 ```bash
-CLI Commands:
-git init
-git status
-git add <file>            # Stage specific file
-git add .                 # Stage all changes
-git commit -m "Message"
-git log
-git diff
+```bash
+```bash
+git init # Start a repo
+git status # Check file states
+git add <file> # Stage a file
+git add . # Stage all files
+git commit -m "Message" # Save changes
+git log # View history
+git diff # Compare changes
 ```
 
 ### Installation & Initial Configuration
@@ -53,8 +54,8 @@ git config --global user.email "alex@example.com"
 1. Create a project folder with mkdir
 
 ```bash
-mkdir my-first-git-repo
-cd my-first-git-repo
+mkdir my-first-git-repo # Create a new directory
+cd my-first-git-repo # Navigate into the directory
 ```
 
 2. Initialize Git repo
@@ -70,31 +71,30 @@ code .
 ```
 
 4. Stage & commit
-
 ```bash
-git add README.md
-git commit -m "My first commit"
+git add README.md # Stage README.md
+git commit -m "My first commit" # Commit with a message
 ```
 
 5. Check Log
 
 ```bash
-git log
+git log # View commit history
 ```
 
 6. Modify README.md then check status & diff
 
 ```bash
-git status
-git diff
+git status # Check file states
+git diff # Compare changes
 ```
 
 7. Stage, commit all changes and check log
 
 ```bash
-git add .
-git commit -m "<message>"
-git log
+git add . # Stage all changes
+git commit -m "<message>" # Commit with a message
+git log # View commit history
 ```
 
 ## Module 2: Branching & Merging
@@ -153,11 +153,8 @@ git merge feature-1           # merges the 2 branches
 Open the conflicted file (e.g, feature.txt). It will look like this:
 
 ```txt
-<<<<<<< HEAD
 This is main branch change
-=======
 This is feature 1
->>>>>>> feature-1
 ```
 Edit the file to resolve the conflict:
 
@@ -168,15 +165,19 @@ This is feature 1
 
 7. Stage the resolved file and commit
 ```bash
-git add feature.txt
-git commit -m "Resolve merge conflict between main and feature-1"
+```bash
+git add feature.txt # Stage the resolved file
+git commit -m "Resolve merge conflict between main and feature-1" # Commit the resolution
 ```
 
 Bonus Tip: Delete a branch (after merging)
 Once you've successfully merged a feature branch, you can delete it to keep your repo clean:
 
 ```bash
-git branch -d feature-1
+# Delete the feature-1 branch after merging
+git branch -d feature-1 # Safely delete the branch if merged
+```
+> Use `-D` instead of `-d` to force delete if the branch hasn't been merged yet.
 ```
 > Use -D instead of -d to force delete if it's not merged yet. ^_~
 
@@ -214,42 +215,45 @@ Initialize a repository
 2. Connect local repo to GitHub
 reference: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
 ```bash
-ssh-keygen -t ed25519 -C "your_email@example.com"
-```
-Enter file in which to save the key (/c/Users/YOU/.ssh/id_ALGORITHM):[Press enter]
 ```bash
-clip < ~/.ssh/id_ed25519.pub
+ssh-keygen -t ed25519 -C "your_email@example.com" # Generate a new SSH key
 ```
-In the upper-right corner of any page on GitHub, click your profile picture, then click  Settings.
+```bash
+Enter file in which to save the key (/c/Users/YOU/.ssh/id_ALGORITHM):[Press enter] # Save the key in the default location
+```
+```bash
+clip < ~/.ssh/id_ed25519.pub # Copy the public key to clipboard
+```
+In the upper-right corner of any page on GitHub, click your profile picture, then click Settings. # Navigate to GitHub settings
 
-In the left sidebar: Access > SSH and GPG keys
+In the left sidebar: Access > SSH and GPG keys # Locate SSH and GPG keys section
 
-Click New SSH key or Add SSH key.
+Click New SSH key or Add SSH key. # Add a new SSH key
 
-In the "Title" field, add a descriptive label for the new key.
+In the "Title" field, add a descriptive label for the new key. # Provide a label for the key
 
-In the "Key" field, paste what was copied from the clip command
+In the "Key" field, paste what was copied from the clip command. # Paste the copied public key
 
-Click Add SSH key.
+Click Add SSH key. # Save the new SSH key
 
 ```bash
-git remote add origin git@github.com:YourUsername/YourRepository.git
+git remote add origin git@github.com:YourUsername/YourRepository.git # Link local repository to GitHub
 ```
-4. Push branches
 ```bash
-git push -u origin main
+git push -u origin main # Push the main branch to GitHub and set upstream
 ```
 If your local branch is named master, use:
 ```bash
-git push -u origin master
+git push -u origin master # Push the master branch to GitHub and set upstream
 ```
 
 NOTE:
-```git push``` uploads your commits to the remote repository for the branch you’re currently working in.
+```git push``` uploads your commits to the remote repository for the branch you’re currently working in. # Push changes to remote repository
 
 5. Clone a partner's repo
 ```bash
-git clone git@github.com:partnerusername/their-repo-name.git
+git clone git@github.com:partnerusername/their-repo-name.git # Clone a repository from a partner
+```
 ```   
 
 ## Module 4: Collaboration Workflow
@@ -270,11 +274,12 @@ Fork the [Simple As It Gits](https://github.com/FOSS-Club-SSET/Simple-As-It-Gits
 ### CLI Commands:
 
 ```bash
-git clone    
-git switch      
-git add              
-git commit        
-git push
+git clone    # Clone a repository to your local machine
+git switch   # Switch branches or create a new branch
+git add      # Stage changes for the next commit
+git commit   # Save changes to the repository
+git push     # Upload commits to a remote repository
+```
 ```
 
 ---
@@ -298,7 +303,7 @@ cd Simple-As-It-Gits-2025/
 #### 3. Create and Switch to a New Branch
 
 ```bash
-git switch -c my-feature-branch
+git switch -c my-feature-branch # Create and switch to a new branch named 'my-feature-branch'
 ```
 
 > This keeps your changes isolated from the main code.
@@ -320,10 +325,10 @@ cd Participants
 
 
 #### 6. Stage and Commit Changes
-
 ```bash
-git add .
-git commit -m "Add a meaningful commit message describing your change"
+git add . # Stage all changes
+git commit -m "Add a meaningful commit message describing your change" # Commit with a descriptive message
+```
 ```
 
 #### 7. Push Your Branch to Your Fork
@@ -357,46 +362,50 @@ CLI Commands:
 bash
 git restore <file>              # Discard uncommitted changes
 git reset --soft HEAD~1         # Undo commit (keep changes)
-git reset --hard HEAD~1         # ⚠️ Destroy last commit
+git reset --hard HEAD~1         # Destroy last commit
 git revert <commit-hash>        # Safe undo for shared history
 git stash                       # Temporary shelf
 ```
 
 ### Exercise:
 
-1. Undo and recommit
--Make a change and commit it
+### Undo and recommit
+- Make a change and commit it  
 ```bash
-git reset --soft HEAD~1
+git reset --soft HEAD~1 # Undo the last commit but keep changes staged
 ```
--Modify the file and recommit the updated change
-
-2. Discard Broken Code
--intentionally break a file
--Discard changes with:
+- Modify the file and recommit the updated change  
 ```bash
-git restore <file>
+git commit -m "Updated commit message" # Recommit the updated changes
 ```
 
-3. Revert a pushed commit
--Identify the hash of a commit already pushed
+### Discard Broken Code
+- Intentionally break a file  
+- Discard changes with:  
 ```bash
-git revert <commit-hash>
-```
--Push the reverted commit to remote
-```bash
-git push
+git restore <file> # Discard uncommitted changes in the specified file
 ```
 
-4. Use git stash
--Make uncommitted changes
+### Revert a pushed commit
+- Identify the hash of a commit already pushed  
 ```bash
-git stash
+git revert <commit-hash> # Create a new commit that undoes the changes from the specified commit
 ```
--switch branches of perform other tasks
--reapply the changes with:
+- Push the reverted commit to remote  
 ```bash
-git stash pop
+git push # Push the new revert commit to the remote repository
+```
+
+### Use git stash
+- Make uncommitted changes  
+```bash
+git stash # Temporarily save uncommitted changes
+```
+- Switch branches or perform other tasks  
+- Reapply the changes with:  
+```bash
+git stash pop # Reapply the stashed changes and remove them from the stash
+```
 ```
 
 ## Module 6: Advanced Practices
