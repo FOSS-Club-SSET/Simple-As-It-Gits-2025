@@ -122,7 +122,7 @@ git merge <branch>            # Merge given branch into current branch
 Exercise:
 1. Create a new branch and switch to it
 ```bash
-git switch -c feature-1       # '-c' creates the new branch and 'switch' command switches to it.
+git switch -c feature-1       # '-c' creates the new branch and 'switch' command switches it to it.
 ```
 > You're now working on a new isolated branch named feature-1.
 
@@ -153,9 +153,12 @@ git merge feature-1           # merges the 2 branches
 Open the conflicted file (e.g, feature.txt). It will look like this:
 
 ```txt
+<<<<<<< HEAD
 This is main branch change
+=======
 This is feature 1
 ```
+>>>>>>> feature-1
 Edit the file to resolve the conflict:
 
 ```txt
@@ -174,12 +177,19 @@ Bonus Tip: Delete a branch (after merging)
 Once you've successfully merged a feature branch, you can delete it to keep your repo clean:
 
 ```bash
-# Delete the feature-1 branch after merging
 git branch -d feature-1 # Safely delete the branch if merged
 ```
 > Use `-D` instead of `-d` to force delete if the branch hasn't been merged yet.
 ```
 > Use -D instead of -d to force delete if it's not merged yet. ^_~
+
+
+
+#### -  What’s a developer’s favorite place to hang out?
+####   → The branch.  ヾ(≧▽≦*)o
+
+
+
 ## Module 3: GitHub Integration
 ### Concepts Covered:
 
@@ -271,7 +281,6 @@ git switch   # Switch branches or create a new branch
 git add      # Stage changes for the next commit
 git commit   # Save changes to the repository
 git push     # Upload commits to a remote repository
-```
 ```
 
 ---
@@ -418,5 +427,7 @@ bash
 temp/
 git tag v1.0                  # Release tagging
 git rebase main               # Reapply commits on updated base
+git cherry-pick <commit>      # Grab specific commit
+```
 git cherry-pick <commit>      # Grab specific commit
 ```
