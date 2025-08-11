@@ -1,0 +1,1 @@
+This is my first time officially learning Git and Github
