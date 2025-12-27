@@ -157,9 +157,9 @@ Open the conflicted file (e.g, feature.txt). It will look like this:
 This is main branch change
 =======
 This is feature 1
-```
 >>>>>>> feature-1
 Edit the file to resolve the conflict:
+```
 
 ```txt
 This is main branch change
